@@ -25,6 +25,7 @@
 		983276CE18B6308100C07DAE /* DlRumor.m in Sources */ = {isa = PBXBuildFile; fileRef = 983276CD18B6308100C07DAE /* DlRumor.m */; };
 		983276D418B630B200C07DAE /* DlRumorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 983276D118B630B200C07DAE /* DlRumorCell.m */; };
 		983276D518B630B200C07DAE /* DlRumorListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 983276D318B630B200C07DAE /* DlRumorListViewController.m */; };
+		983276D818B63CFC00C07DAE /* DlConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 983276D718B63CFC00C07DAE /* DlConfig.m */; };
 		A9517BD8BB1F49F7B134B3FF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1609B9ECA62F4FAABB369D27 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,8 @@
 		983276D118B630B200C07DAE /* DlRumorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DlRumorCell.m; sourceTree = "<group>"; };
 		983276D218B630B200C07DAE /* DlRumorListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DlRumorListViewController.h; sourceTree = "<group>"; };
 		983276D318B630B200C07DAE /* DlRumorListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DlRumorListViewController.m; sourceTree = "<group>"; };
+		983276D618B63CFC00C07DAE /* DlConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DlConfig.h; sourceTree = "<group>"; };
+		983276D718B63CFC00C07DAE /* DlConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DlConfig.m; sourceTree = "<group>"; };
 		F91575345D4C4EC0A334DACB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +137,8 @@
 				983276C218B4DBE700C07DAE /* models */,
 				9802DC1B18B3815D00D551E4 /* DlAppDelegate.h */,
 				9802DC1C18B3815D00D551E4 /* DlAppDelegate.m */,
+				983276D618B63CFC00C07DAE /* DlConfig.h */,
+				983276D718B63CFC00C07DAE /* DlConfig.m */,
 				9802DC1E18B3815D00D551E4 /* Main_iPhone.storyboard */,
 				9802DC2118B3815D00D551E4 /* Main_iPad.storyboard */,
 				9802DC2718B3815D00D551E4 /* Images.xcassets */,
@@ -336,6 +341,7 @@
 			files = (
 				983276CB18B6307900C07DAE /* DlAPIManager.m in Sources */,
 				983276D418B630B200C07DAE /* DlRumorCell.m in Sources */,
+				983276D818B63CFC00C07DAE /* DlConfig.m in Sources */,
 				9802DC1D18B3815D00D551E4 /* DlAppDelegate.m in Sources */,
 				983276CE18B6308100C07DAE /* DlRumor.m in Sources */,
 				983276D518B630B200C07DAE /* DlRumorListViewController.m in Sources */,

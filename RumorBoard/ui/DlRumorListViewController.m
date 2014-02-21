@@ -105,7 +105,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    return [(DlRumor *)[self.rumorList objectAtIndex:indexPath.row] cellHeight];
-    return 300;
+    DlRumor *rumor = [self.rumorList objectAtIndex:indexPath.row];
+//    DlRumorCell *cell = (DlRumorCell *)[tableView cellForRowAtIndexPath:indexPath];
+//    return [rumor cellHeightWithFont:cell.rumorFont maxLines:cell.maxRumorLines width:cell.rumorWidth];
+    return [rumor cellHeight];
 }
 
 /*

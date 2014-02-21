@@ -16,4 +16,8 @@
 
 @property (nonatomic, strong) DlRumor *rumor;
 
+//- (UIFont *)rumorFont;
+//- (int)maxRumorLines;
+//- (CGFloat)rumorWidth;
+
 @end

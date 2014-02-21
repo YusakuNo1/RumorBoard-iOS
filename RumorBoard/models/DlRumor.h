@@ -20,5 +20,6 @@
 
 //@property (nonatomic) float cellHeight;
 - (float)cellHeight;
+//- (float)cellHeightWithFont:(UIFont *)font maxLines:(int)maxLines width:(CGFloat)width;
 
 @end

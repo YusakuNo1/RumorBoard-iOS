@@ -82,4 +82,16 @@
     CGContextRestoreGState(context);
 }
 
+//- (UIFont *)rumorFont {
+//    return self.rumorLabel.font;
+//}
+//
+//- (int)maxRumorLines {
+//    return self.rumorLabel.numberOfLines;
+//}
+//
+//- (CGFloat)rumorWidth {
+//    return self.rumorLabel.frame.size.width;
+//}
+
 @end
