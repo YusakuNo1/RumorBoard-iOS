@@ -10,6 +10,8 @@
 #import "JSONModel.h"
 
 
+@protocol DlRumorComment;
+
 @interface DlRumor : JSONModel
 
 @property (nonatomic, strong) NSNumber *id;
@@ -17,9 +19,15 @@
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, strong) NSNumber *owner;
 @property (nonatomic, strong) NSNumber *anonymous;
+@property (nonatomic, strong) NSArray<DlRumorComment> *comments;
+//@property (nonatomic, strong) NSArray *comments;
 
 //@property (nonatomic) float cellHeight;
 - (float)cellHeight;
 //- (float)cellHeightWithFont:(UIFont *)font maxLines:(int)maxLines width:(CGFloat)width;
+
+
+- (void)setExpended:(BOOL)expended;
+- (BOOL)expended;
 
 @end

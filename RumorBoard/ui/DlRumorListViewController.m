@@ -10,6 +10,7 @@
 #import "DlRumorCell.h"
 #import "DlRumor.h"
 #import "DlAPIManager.h"
+#import "RNBlurModalView.h"
 
 
 
@@ -94,11 +95,15 @@
     static NSString *CellIdentifier = @"DlRumorCell";
     DlRumorCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-//    // Configure the cell...
-//    CGRect frame = cell.frame;
-//    frame.size.height = (rand() % 100) + 30;
-//    cell.frame = frame;
     cell.rumor = [self.rumorList objectAtIndex:indexPath.row];
+//    [cell.commentsButton bk_addEventHandler:^(id sender) {
+//        cell.rumor.expended = !cell.rumor.expended;
+//        
+//        [self.tableView beginUpdates];
+//        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//        [self.tableView endUpdates];
+//                            }
+//                           forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
 }
@@ -167,6 +172,12 @@
     [[DlAPIManager sharedManager] getRumors:^(NSArray *jsonArray, NSError *error) {
         int a = 0;
     }];
+}
+
+- (IBAction)onAddRumor:(id)sender {
+    self.tableView.scrollEnabled = FALSE;
+    RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:self title:@"Hello world!" message:@"Pur your message here."];
+    [modal show];
 }
 
 @end

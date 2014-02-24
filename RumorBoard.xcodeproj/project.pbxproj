@@ -21,6 +21,9 @@
 		9802DC3118B3815D00D551E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9802DC1018B3815D00D551E4 /* UIKit.framework */; };
 		9802DC3918B3815D00D551E4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9802DC3718B3815D00D551E4 /* InfoPlist.strings */; };
 		9802DC3B18B3815D00D551E4 /* RumorBoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9802DC3A18B3815D00D551E4 /* RumorBoardTests.m */; };
+		982D861918B8E638007EEB0E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 982D861818B8E638007EEB0E /* QuartzCore.framework */; };
+		982D861B18B8E643007EEB0E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 982D861A18B8E643007EEB0E /* Accelerate.framework */; };
+		982D862418BA3F28007EEB0E /* DlRumorComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 982D862318BA3F28007EEB0E /* DlRumorComment.m */; };
 		983276CB18B6307900C07DAE /* DlAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 983276CA18B6307900C07DAE /* DlAPIManager.m */; };
 		983276CE18B6308100C07DAE /* DlRumor.m in Sources */ = {isa = PBXBuildFile; fileRef = 983276CD18B6308100C07DAE /* DlRumor.m */; };
 		983276D418B630B200C07DAE /* DlRumorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 983276D118B630B200C07DAE /* DlRumorCell.m */; };
@@ -59,6 +62,10 @@
 		9802DC3618B3815D00D551E4 /* RumorBoardTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RumorBoardTests-Info.plist"; sourceTree = "<group>"; };
 		9802DC3818B3815D00D551E4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9802DC3A18B3815D00D551E4 /* RumorBoardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RumorBoardTests.m; sourceTree = "<group>"; };
+		982D861818B8E638007EEB0E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		982D861A18B8E643007EEB0E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		982D862218BA3F28007EEB0E /* DlRumorComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DlRumorComment.h; path = models/DlRumorComment.h; sourceTree = "<group>"; };
+		982D862318BA3F28007EEB0E /* DlRumorComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DlRumorComment.m; path = models/DlRumorComment.m; sourceTree = "<group>"; };
 		983276C918B6307900C07DAE /* DlAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DlAPIManager.h; path = clients/DlAPIManager.h; sourceTree = "<group>"; };
 		983276CA18B6307900C07DAE /* DlAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DlAPIManager.m; path = clients/DlAPIManager.m; sourceTree = "<group>"; };
 		983276CC18B6308100C07DAE /* DlRumor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DlRumor.h; path = models/DlRumor.h; sourceTree = "<group>"; };
@@ -77,6 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				982D861B18B8E643007EEB0E /* Accelerate.framework in Frameworks */,
+				982D861918B8E638007EEB0E /* QuartzCore.framework in Frameworks */,
 				9802DC0F18B3815D00D551E4 /* CoreGraphics.framework in Frameworks */,
 				9802DC1118B3815D00D551E4 /* UIKit.framework in Frameworks */,
 				9802DC0D18B3815D00D551E4 /* Foundation.framework in Frameworks */,
@@ -120,6 +129,8 @@
 		9802DC0B18B3815D00D551E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				982D861A18B8E643007EEB0E /* Accelerate.framework */,
+				982D861818B8E638007EEB0E /* QuartzCore.framework */,
 				9802DC0C18B3815D00D551E4 /* Foundation.framework */,
 				9802DC0E18B3815D00D551E4 /* CoreGraphics.framework */,
 				9802DC1018B3815D00D551E4 /* UIKit.framework */,
@@ -179,6 +190,8 @@
 		983276C218B4DBE700C07DAE /* models */ = {
 			isa = PBXGroup;
 			children = (
+				982D862218BA3F28007EEB0E /* DlRumorComment.h */,
+				982D862318BA3F28007EEB0E /* DlRumorComment.m */,
 				983276CC18B6308100C07DAE /* DlRumor.h */,
 				983276CD18B6308100C07DAE /* DlRumor.m */,
 			);
@@ -342,6 +355,7 @@
 				983276CB18B6307900C07DAE /* DlAPIManager.m in Sources */,
 				983276D418B630B200C07DAE /* DlRumorCell.m in Sources */,
 				983276D818B63CFC00C07DAE /* DlConfig.m in Sources */,
+				982D862418BA3F28007EEB0E /* DlRumorComment.m in Sources */,
 				9802DC1D18B3815D00D551E4 /* DlAppDelegate.m in Sources */,
 				983276CE18B6308100C07DAE /* DlRumor.m in Sources */,
 				983276D518B630B200C07DAE /* DlRumorListViewController.m in Sources */,

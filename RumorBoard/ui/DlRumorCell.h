@@ -16,8 +16,8 @@
 
 @property (nonatomic, strong) DlRumor *rumor;
 
-//- (UIFont *)rumorFont;
-//- (int)maxRumorLines;
-//- (CGFloat)rumorWidth;
+@property (weak, nonatomic) IBOutlet UIButton *commentsButton;
+@property (weak, nonatomic) IBOutlet UIButton *thumbUpButton;
+@property (weak, nonatomic) IBOutlet UIButton *thumbDownButton;
 
 @end

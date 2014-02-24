@@ -19,9 +19,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *createDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rumorLabel;
-@property (weak, nonatomic) IBOutlet UIButton *relatedButton;
-@property (weak, nonatomic) IBOutlet UIButton *commentsButton;
-@property (weak, nonatomic) IBOutlet UIImageView *favouriteImageView;
 
 @end
 
@@ -82,16 +79,13 @@
     CGContextRestoreGState(context);
 }
 
-//- (UIFont *)rumorFont {
-//    return self.rumorLabel.font;
+//- (IBAction)onTapComments:(id)sender {
 //}
 //
-//- (int)maxRumorLines {
-//    return self.rumorLabel.numberOfLines;
+//- (IBAction)onTapThumbUp:(id)sender {
 //}
 //
-//- (CGFloat)rumorWidth {
-//    return self.rumorLabel.frame.size.width;
+//- (IBAction)onTapThumbDown:(id)sender {
 //}
 
 @end
