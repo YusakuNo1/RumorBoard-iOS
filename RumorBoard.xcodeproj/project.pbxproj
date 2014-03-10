@@ -42,7 +42,6 @@
 		983276D518B630B200C07DAE /* DlRumorListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 983276D318B630B200C07DAE /* DlRumorListViewController.m */; };
 		983276D818B63CFC00C07DAE /* DlConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 983276D718B63CFC00C07DAE /* DlConfig.m */; };
 		9839726518C61A580048FFC3 /* DlSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9839726418C61A580048FFC3 /* DlSettingsViewController.m */; };
-		987E9CCD18CC928A00897F8A /* rumors.json in Resources */ = {isa = PBXBuildFile; fileRef = 987E9CCC18CC928A00897F8A /* rumors.json */; };
 		988C417F18C0B5CC003B8021 /* DlLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988C417E18C0B5CC003B8021 /* DlLoginViewController.m */; };
 		A9517BD8BB1F49F7B134B3FF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1609B9ECA62F4FAABB369D27 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -118,7 +117,6 @@
 		983276D718B63CFC00C07DAE /* DlConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DlConfig.m; sourceTree = "<group>"; };
 		9839726318C61A580048FFC3 /* DlSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DlSettingsViewController.h; sourceTree = "<group>"; };
 		9839726418C61A580048FFC3 /* DlSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DlSettingsViewController.m; sourceTree = "<group>"; };
-		987E9CCC18CC928A00897F8A /* rumors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = rumors.json; path = json/rumors.json; sourceTree = "<group>"; };
 		988C417D18C0B5CC003B8021 /* DlLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DlLoginViewController.h; sourceTree = "<group>"; };
 		988C417E18C0B5CC003B8021 /* DlLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DlLoginViewController.m; sourceTree = "<group>"; };
 		F91575345D4C4EC0A334DACB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -189,7 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				9825CFEE18CDE0AF00B313C6 /* thirdparty */,
-				987E9CCB18CC926C00897F8A /* json */,
 				983276CF18B630B200C07DAE /* ui */,
 				983276C318B4DD6E00C07DAE /* clients */,
 				983276C218B4DBE700C07DAE /* models */,
@@ -342,14 +339,6 @@
 			path = ui;
 			sourceTree = "<group>";
 		};
-		987E9CCB18CC926C00897F8A /* json */ = {
-			isa = PBXGroup;
-			children = (
-				987E9CCC18CC928A00897F8A /* rumors.json */,
-			);
-			name = json;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -431,7 +420,6 @@
 			files = (
 				9802DC2318B3815D00D551E4 /* Main_iPad.storyboard in Resources */,
 				9802DC2818B3815D00D551E4 /* Images.xcassets in Resources */,
-				987E9CCD18CC928A00897F8A /* rumors.json in Resources */,
 				9802DC2018B3815D00D551E4 /* Main_iPhone.storyboard in Resources */,
 				9802DC1718B3815D00D551E4 /* InfoPlist.strings in Resources */,
 			);
