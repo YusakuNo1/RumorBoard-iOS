@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-typedef void (^GetRumorsCallback)(NSArray *jsonArray, NSError *error);
+//typedef void (^GetRumorsCallback)(NSArray *jsonArray, NSError *error);
 
 @interface DlAPIManager : NSObject
 
@@ -17,6 +17,15 @@ typedef void (^GetRumorsCallback)(NSArray *jsonArray, NSError *error);
 
 @property (nonatomic, readonly) NSString *serverUrl;
 
-- (void)getRumors:(GetRumorsCallback)callback;
+
+// User APIs
+- (void)loginWithUsername:(NSString *)username password:(NSString *)password callback:(NetworkCallback)callback;
+- (void)createUserWithUsername:(NSString *)username password:(NSString *)password callback:(NetworkCallback)callback;
+- (void)logoutWithCallback:(NetworkCallback)callback;
+
+// Rumor APIs
+- (void)getRumors:(NetworkCallback)callback;
+- (void)setRumorThumbs:(int)rumorId isUp:(BOOL)isUp callback:(NetworkCallback)callback;
+- (void)createRumor:(NSDictionary *)data callback:(NetworkCallback)callback;
 
 @end

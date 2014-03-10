@@ -16,8 +16,4 @@
 
 @property (nonatomic, strong) DlRumor *rumor;
 
-@property (weak, nonatomic) IBOutlet UIButton *commentsButton;
-@property (weak, nonatomic) IBOutlet UIButton *thumbUpButton;
-@property (weak, nonatomic) IBOutlet UIButton *thumbDownButton;
-
 @end

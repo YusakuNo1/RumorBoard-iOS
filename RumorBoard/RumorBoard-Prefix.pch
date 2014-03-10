@@ -16,4 +16,11 @@
 
     #import <BlocksKit.h>
     #import <BlocksKit+UIKit.h>
+
+    #define kUsername        @"kUsername"
+    #define kUserId          @"kUserId"
+    #define kAuthToken       @"kAuthToken"
+
+    typedef void(^NetworkCallback)(NSObject *payload, NSError *error);
 #endif
+

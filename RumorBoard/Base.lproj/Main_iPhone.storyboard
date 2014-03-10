@@ -1,9 +1,60 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B3116" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="DjL-cn-vEq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="DjL-cn-vEq">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
+        <!--Dl Create Rumor View Controller-->
+        <scene sceneID="Kq9-pS-ayW">
+            <objects>
+                <viewController id="fnE-SB-jvz" customClass="DlCreateRumorViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iiw-cO-C7N" customClass="TPKeyboardAvoidingScrollView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="rumor title" minimumFontSize="17" id="WQg-Fe-KEc">
+                                <rect key="frame" x="32" y="16" width="256" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="7iE-is-p3U">
+                                <rect key="frame" x="32" y="62" width="256" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="4gF-WR-cp2">
+                                <rect key="frame" x="136" y="238" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anonymous" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="seT-84-V8L">
+                                <rect key="frame" x="32" y="238" width="92" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="UJM-GM-ODB">
+                        <barButtonItem key="rightBarButtonItem" title="Create" id="O4A-je-QHF">
+                            <connections>
+                                <action selector="onSubmit:" destination="fnE-SB-jvz" id="ur4-ue-tUo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="isAnonymousSwitch" destination="4gF-WR-cp2" id="ucQ-zY-5VY"/>
+                        <outlet property="rumorContentTextView" destination="7iE-is-p3U" id="cCI-9F-9ld"/>
+                        <outlet property="rumorTitleTextField" destination="WQg-Fe-KEc" id="7ux-3h-D0D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yTP-W8-5vm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-148" y="-985"/>
+        </scene>
         <!--Dl Rumor List View Controller - Rumor Board-->
         <scene sceneID="dFh-cH-8RP">
             <objects>
@@ -83,6 +134,9 @@
                                                                 <color key="titleColor" white="0.23000000000000001" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="onTapComments:" destination="dOb-TU-dyP" eventType="touchUpInside" id="xI8-56-lDu"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yXT-ih-6FE" userLabel="Button - thumbUp">
                                                             <rect key="frame" x="159" y="-7" width="64" height="64"/>
@@ -93,6 +147,9 @@
                                                                 <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="onTapThumbsUp:" destination="dOb-TU-dyP" eventType="touchUpInside" id="wAU-8I-Bac"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Zjn-ei-Kpt" userLabel="Button - thumbDown">
                                                             <rect key="frame" x="226" y="-7" width="64" height="64"/>
@@ -103,6 +160,9 @@
                                                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="onTapThumbsDown:" destination="dOb-TU-dyP" eventType="touchUpInside" id="LEM-dd-naS"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -114,7 +174,7 @@
                                     <color key="backgroundColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="commentsButton" destination="in9-Ak-kco" id="msx-HV-pR9"/>
+                                    <outlet property="commentsButton" destination="in9-Ak-kco" id="jIn-Ku-oms"/>
                                     <outlet property="containerView" destination="kfl-CI-ljS" id="oid-X5-3Bs"/>
                                     <outlet property="createDateLabel" destination="QoW-PX-uIp" id="ZBA-ZM-TGP"/>
                                     <outlet property="rumorLabel" destination="K6b-80-kRj" id="EzN-Ms-eiI"/>
@@ -131,12 +191,14 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="oXf-VU-8Rq">
                             <connections>
                                 <action selector="onAddRumor:" destination="nIh-tl-bNJ" id="FTg-Qa-b9E"/>
+                                <segue destination="fnE-SB-jvz" kind="push" id="L8X-N7-HGX"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="81F-QY-jWL">
                             <color key="tintColor" red="0.1960784314" green="0.1960784314" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="onSettings:" destination="nIh-tl-bNJ" id="JYX-vC-zU9"/>
+                                <segue destination="zrK-nA-EQC" kind="modal" id="2sV-Kk-JfR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -160,6 +222,112 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BA5-Vv-5PY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-651" y="-295"/>
+        </scene>
+        <!--Dl Login View Controller-->
+        <scene sceneID="7QO-7P-Izk">
+            <objects>
+                <viewController storyboardIdentifier="DlLoginViewController" id="SdZ-CF-HYf" customClass="DlLoginViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mj8-rW-nVa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" minimumFontSize="17" id="ND3-3q-gCw">
+                                <rect key="frame" x="66" y="126" width="189" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" id="7p0-kE-4mH">
+                                <rect key="frame" x="66" y="175" width="189" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BKb-Wy-vdm">
+                                <rect key="frame" x="42" y="261" width="113" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onLogin:" destination="SdZ-CF-HYf" eventType="touchUpInside" id="uq8-9n-YnE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sat-cx-iAx">
+                                <rect key="frame" x="163" y="261" width="113" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Register">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onRegister:" destination="SdZ-CF-HYf" eventType="touchUpInside" id="O3E-Y6-8jk"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rumor Board" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ra6-aI-a3P">
+                                <rect key="frame" x="20" y="88" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="ND3-3q-gCw" id="XkO-GF-gdh"/>
+                        <outlet property="passwordTextField" destination="7p0-kE-4mH" id="jVp-mE-JlM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Rh-gh-XV6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-407" y="371"/>
+        </scene>
+        <!--Dl Settings View Controller-->
+        <scene sceneID="lyX-0D-bOR">
+            <objects>
+                <viewController id="zrK-nA-EQC" customClass="DlSettingsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dBn-uH-cWP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AI2-Af-ecH">
+                                <rect key="frame" x="99" y="200" width="122" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onLogout:" destination="zrK-nA-EQC" eventType="touchUpInside" id="t6L-8H-in3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4OM-fy-hyc">
+                                <rect key="frame" x="43" y="80" width="35" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onBack:" destination="zrK-nA-EQC" eventType="touchUpInside" id="y84-8a-N7O"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uSc-iy-9LE">
+                                <rect key="frame" x="53" y="299" width="214" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create Testing Rumors">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onCreateTestRumors:" destination="zrK-nA-EQC" eventType="touchUpInside" id="OER-fp-Sn8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XWC-JN-aco" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-42" y="371"/>
         </scene>
     </scenes>
     <resources>

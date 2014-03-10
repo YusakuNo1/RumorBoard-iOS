@@ -62,4 +62,21 @@ BOOL _expended = FALSE;
     return _expended;
 }
 
+
+-(id)initWithString:(NSString*)string error:(JSONModelError**)err
+{
+    return [super initWithString:string error:err];
+}
+
+
+-(NSDate*)NSDateFromNSString:(NSString*)string
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    string = [string stringByReplacingOccurrencesOfString:@":" withString:@""]; // this is such an ugly code, is this the only way?
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HHmmssZZZZ"];
+    
+    return [dateFormatter dateFromString: string];
+}
+
+
 @end

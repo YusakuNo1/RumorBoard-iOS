@@ -10,6 +10,8 @@
 
 #import "DlRumorCell.h"
 #import "DlRumor.h"
+#import "DlConfig.h"
+#import "DlAPIManager.h"
 
 
 @interface DlRumorCell ()
@@ -19,6 +21,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *createDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rumorLabel;
+@property (weak, nonatomic) IBOutlet UIButton *commentsButton;
+@property (weak, nonatomic) IBOutlet UIButton *thumbUpButton;
+@property (weak, nonatomic) IBOutlet UIButton *thumbDownButton;
 
 @end
 
@@ -54,12 +59,25 @@
     
     if (self.rumor) {
         self.rumorLabel.text = self.rumor.content;
+        [self updateUI];
     }
 }
 
 - (void)setRumor:(DlRumor *)rumor {
     _rumor = rumor;
+    [self updateUI];
+}
+
+- (void)updateUI {
+    if (!self.rumor)
+        return;
+    
     self.rumorLabel.text = self.rumor.content;
+    self.createDateLabel.text = [[DlConfig sharedConfig].dateFormatter stringFromDate:self.rumor.updated_at];
+    NSString *commentsString = [NSString stringWithFormat:@"%@ Comment%@", self.rumor.commentCount, self.rumor.commentCount.intValue == 1 ? @"" : @"s"];
+    [self.commentsButton setTitle:commentsString forState:UIControlStateNormal];
+    [self.thumbUpButton setTitle:[self.rumor.thumbsUpCount stringValue] forState:UIControlStateNormal];
+    [self.thumbDownButton setTitle:[self.rumor.thumbsDownCount stringValue] forState:UIControlStateNormal];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -79,13 +97,25 @@
     CGContextRestoreGState(context);
 }
 
-//- (IBAction)onTapComments:(id)sender {
-//}
-//
-//- (IBAction)onTapThumbUp:(id)sender {
-//}
-//
-//- (IBAction)onTapThumbDown:(id)sender {
-//}
+- (IBAction)onTapComments:(id)sender {
+}
+
+- (IBAction)onTapThumbsUp:(id)sender {
+    [[DlAPIManager sharedManager] setRumorThumbs:self.rumor.id.intValue isUp:YES callback:^(NSObject *payload, NSError *error) {
+        NSDictionary *dict = (NSDictionary *)payload;
+        self.rumor.thumbsUpCount = [dict objectForKey:@"thumbsUpCount"];
+        self.rumor.thumbsDownCount = [dict objectForKey:@"thumbsDownCount"];
+        [self updateUI];
+    }];
+}
+
+- (IBAction)onTapThumbsDown:(id)sender {
+    [[DlAPIManager sharedManager] setRumorThumbs:self.rumor.id.intValue isUp:NO callback:^(NSObject *payload, NSError *error) {
+        NSDictionary *dict = (NSDictionary *)payload;
+        self.rumor.thumbsUpCount = [dict objectForKey:@"thumbsUpCount"];
+        self.rumor.thumbsDownCount = [dict objectForKey:@"thumbsDownCount"];
+        [self updateUI];
+    }];
+}
 
 @end

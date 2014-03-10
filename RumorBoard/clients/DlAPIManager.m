@@ -7,16 +7,20 @@
 //
 
 #import "DlAPIManager.h"
+#import "DlConfig.h"
 #import "AFHTTPRequestOperationManager.h"
+#import "AFURLSessionManager.h"
+#import "JSONHTTPClient.h"
 
 
 NSString *kKeyServerUrl = @"kKeyServerUrl";
 NSString *kJsonQuerySubfix = @"?format=json";
 
 
-@interface DlAPIManager () {
-    NSString *_serverUrl;
-}
+@interface DlAPIManager ()
+
+@property (nonatomic, strong) NSString *serverUrl;
+@property (nonatomic, strong) AFHTTPRequestOperationManager *httpManager;
 
 @end
 
@@ -32,6 +36,7 @@ NSString *kJsonQuerySubfix = @"?format=json";
     return sharedManager;
 }
 
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -40,23 +45,33 @@ NSString *kJsonQuerySubfix = @"?format=json";
     return self;
 }
 
+
 - (NSString *)serverUrl {
     if (!_serverUrl) {
         _serverUrl = [[NSUserDefaults standardUserDefaults] objectForKey:kKeyServerUrl];
         
         if (!_serverUrl) {
             _serverUrl = @"http://localhost:8000/";
+//            _serverUrl = @"http://hack-day-rumor-board.herokuapp.com/";
         }
     }
     
     return _serverUrl;
 }
 
-- (void)getRumors:(GetRumorsCallback)callback {
+
+- (AFHTTPRequestOperationManager *)httpManager {
+    if (!_httpManager) {
+        _httpManager = [AFHTTPRequestOperationManager manager];
+    }
+    return _httpManager;
+}
+
+
+- (void)getRumors:(NetworkCallback)callback {
     NSString *urlString = [[self serverUrl] stringByAppendingFormat:@"rumors/%@", kJsonQuerySubfix];
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self.httpManager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *resultArray = [responseObject objectForKey:@"results"];
         if (callback) {
             callback(resultArray, nil);
@@ -67,5 +82,85 @@ NSString *kJsonQuerySubfix = @"?format=json";
         NSLog(@"Error: %@", error);
     }];
 }
+
+
+- (void)setRumorThumbs:(int)rumorId isUp:(BOOL)isUp callback:(NetworkCallback)callback {
+    NSString *urlString = [[self serverUrl] stringByAppendingFormat:@"rumors/%d/thumbs/%@/", rumorId, (isUp ? @"up" : @"down")];
+
+//    [JSONHTTPClient postJSONFromURLWithString:urlString
+//                                       params:nil
+//                                   completion:^(id json, JSONModelError *err) {
+//                                       int a =0;
+//    }];
+    NSString *authString = [@"token " stringByAppendingString:[DlConfig sharedConfig].authToken];
+    [JSONHTTPClient JSONFromURLWithString:urlString
+                                   method:kHTTPMethodPOST
+                                   params:nil
+                               orBodyData:nil
+                                  headers:@{@"Authorization": authString}
+                               completion:^(id json, JSONModelError *err) {
+                                   if (callback) {
+                                       callback(json, err);
+                                   }
+                               }];
+}
+
+
+- (void)createRumor:(NSDictionary *)data callback:(NetworkCallback)callback {
+    NSString *authString = [@"token " stringByAppendingString:[DlConfig sharedConfig].authToken];
+    [JSONHTTPClient JSONFromURLWithString:[[self serverUrl] stringByAppendingString:@"rumors/"]
+                                   method:kHTTPMethodPOST
+                                   params:data
+                               orBodyData:nil
+                                  headers:@{@"Authorization": authString}
+                               completion:^(id json, JSONModelError *err) {
+                                   if (callback) {
+                                       callback(json, err);
+                                   }
+                               }];
+}
+
+
+- (void)loginWithUsername:(NSString *)username
+                 password:(NSString *)password
+                 callback:(NetworkCallback)callback {
+    [JSONHTTPClient postJSONFromURLWithString:[[self serverUrl] stringByAppendingString:@"users/login/"]
+                                       params:@{@"email":username, @"password":password}
+                                   completion:^(id json, JSONModelError *err) {
+                                       if (!err && [json isKindOfClass:[NSDictionary class]]) {
+                                           NSDictionary *dict = (NSDictionary *)json;
+                                           [DlConfig sharedConfig].username = username;
+                                           [DlConfig sharedConfig].userId = [json objectForKey:@"id"];
+                                           [DlConfig sharedConfig].authToken = [dict objectForKey:@"token"];
+                                       }
+
+                                       callback(json, err);
+                                   }];
+}
+
+
+- (void)createUserWithUsername:(NSString *)username password:(NSString *)password callback:(NetworkCallback)callback {
+    [JSONHTTPClient postJSONFromURLWithString:[[self serverUrl] stringByAppendingString:@"users/"]
+                                       params:@{@"email":username, @"password":password}
+                                   completion:^(id json, JSONModelError *err) {
+                                       if (!err && [json isKindOfClass:[NSDictionary class]]) {
+                                           NSDictionary *dict = (NSDictionary *)json;
+                                           [DlConfig sharedConfig].username = username;
+                                           [DlConfig sharedConfig].userId = [json objectForKey:@"id"];
+                                           [DlConfig sharedConfig].authToken = [dict objectForKey:@"token"];
+                                       }
+
+                                       callback(json, err);
+                                   }];
+}
+
+
+- (void)logoutWithCallback:(NetworkCallback)callback {
+    [JSONHTTPClient getJSONFromURLWithString:[[self serverUrl] stringByAppendingString:@"users/logout/"]
+                                  completion:^(id json, JSONModelError *err) {
+                                      callback(json, err);
+                                  }];
+}
+
 
 @end

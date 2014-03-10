@@ -1,0 +1,3 @@
+[submodule "thirdparty/JSONModel"]
+	path = thirdparty/JSONModel
+	url = https://github.com/YusakuNo1/JSONModel.git

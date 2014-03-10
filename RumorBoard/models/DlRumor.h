@@ -19,8 +19,13 @@
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, strong) NSNumber *owner;
 @property (nonatomic, strong) NSNumber *anonymous;
-@property (nonatomic, strong) NSArray<DlRumorComment> *comments;
-//@property (nonatomic, strong) NSArray *comments;
+@property (nonatomic, strong) NSNumber *commentCount;
+@property (nonatomic, strong) NSNumber *thumbsUpCount;
+@property (nonatomic, strong) NSNumber *thumbsDownCount;
+@property (nonatomic, strong) NSString *thumbsVote;
+@property (nonatomic, strong) NSDate *created_at;
+@property (nonatomic, strong) NSDate *updated_at;
+//@property (nonatomic, strong) NSArray<DlRumorComment> *comments;
 
 //@property (nonatomic) float cellHeight;
 - (float)cellHeight;

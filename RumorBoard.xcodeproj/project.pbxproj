@@ -21,6 +21,18 @@
 		9802DC3118B3815D00D551E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9802DC1018B3815D00D551E4 /* UIKit.framework */; };
 		9802DC3918B3815D00D551E4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9802DC3718B3815D00D551E4 /* InfoPlist.strings */; };
 		9802DC3B18B3815D00D551E4 /* RumorBoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9802DC3A18B3815D00D551E4 /* RumorBoardTests.m */; };
+		9825CFED18CCBA4A00B313C6 /* DlCreateRumorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9825CFEC18CCBA4A00B313C6 /* DlCreateRumorViewController.m */; };
+		9825D03218CDE14800B313C6 /* JSONModel+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9825D01918CDE14800B313C6 /* JSONModel+CoreData.m */; };
+		9825D03318CDE14800B313C6 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9825D01B18CDE14800B313C6 /* JSONModel.m */; };
+		9825D03418CDE14800B313C6 /* JSONModelArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9825D01D18CDE14800B313C6 /* JSONModelArray.m */; };
+		9825D03518CDE14800B313C6 /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9825D01F18CDE14800B313C6 /* JSONModelClassProperty.m */; };
+		9825D03618CDE14800B313C6 /* JSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 9825D02118CDE14800B313C6 /* JSONModelError.m */; };
+		9825D03718CDE14800B313C6 /* NSArray+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9825D02418CDE14800B313C6 /* NSArray+JSONModel.m */; };
+		9825D03818CDE14800B313C6 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9825D02818CDE14800B313C6 /* JSONAPI.m */; };
+		9825D03918CDE14800B313C6 /* JSONHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9825D02A18CDE14800B313C6 /* JSONHTTPClient.m */; };
+		9825D03A18CDE14800B313C6 /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9825D02C18CDE14800B313C6 /* JSONModel+networking.m */; };
+		9825D03B18CDE14800B313C6 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9825D02F18CDE14800B313C6 /* JSONKeyMapper.m */; };
+		9825D03C18CDE14800B313C6 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9825D03118CDE14800B313C6 /* JSONValueTransformer.m */; };
 		982D861918B8E638007EEB0E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 982D861818B8E638007EEB0E /* QuartzCore.framework */; };
 		982D861B18B8E643007EEB0E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 982D861A18B8E643007EEB0E /* Accelerate.framework */; };
 		982D862418BA3F28007EEB0E /* DlRumorComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 982D862318BA3F28007EEB0E /* DlRumorComment.m */; };
@@ -29,6 +41,9 @@
 		983276D418B630B200C07DAE /* DlRumorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 983276D118B630B200C07DAE /* DlRumorCell.m */; };
 		983276D518B630B200C07DAE /* DlRumorListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 983276D318B630B200C07DAE /* DlRumorListViewController.m */; };
 		983276D818B63CFC00C07DAE /* DlConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 983276D718B63CFC00C07DAE /* DlConfig.m */; };
+		9839726518C61A580048FFC3 /* DlSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9839726418C61A580048FFC3 /* DlSettingsViewController.m */; };
+		987E9CCD18CC928A00897F8A /* rumors.json in Resources */ = {isa = PBXBuildFile; fileRef = 987E9CCC18CC928A00897F8A /* rumors.json */; };
+		988C417F18C0B5CC003B8021 /* DlLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988C417E18C0B5CC003B8021 /* DlLoginViewController.m */; };
 		A9517BD8BB1F49F7B134B3FF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1609B9ECA62F4FAABB369D27 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +77,31 @@
 		9802DC3618B3815D00D551E4 /* RumorBoardTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RumorBoardTests-Info.plist"; sourceTree = "<group>"; };
 		9802DC3818B3815D00D551E4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9802DC3A18B3815D00D551E4 /* RumorBoardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RumorBoardTests.m; sourceTree = "<group>"; };
+		9825CFEB18CCBA4A00B313C6 /* DlCreateRumorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DlCreateRumorViewController.h; sourceTree = "<group>"; };
+		9825CFEC18CCBA4A00B313C6 /* DlCreateRumorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DlCreateRumorViewController.m; sourceTree = "<group>"; };
+		9825D01818CDE14800B313C6 /* JSONModel+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONModel+CoreData.h"; sourceTree = "<group>"; };
+		9825D01918CDE14800B313C6 /* JSONModel+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONModel+CoreData.m"; sourceTree = "<group>"; };
+		9825D01A18CDE14800B313C6 /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
+		9825D01B18CDE14800B313C6 /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
+		9825D01C18CDE14800B313C6 /* JSONModelArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelArray.h; sourceTree = "<group>"; };
+		9825D01D18CDE14800B313C6 /* JSONModelArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelArray.m; sourceTree = "<group>"; };
+		9825D01E18CDE14800B313C6 /* JSONModelClassProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelClassProperty.h; sourceTree = "<group>"; };
+		9825D01F18CDE14800B313C6 /* JSONModelClassProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelClassProperty.m; sourceTree = "<group>"; };
+		9825D02018CDE14800B313C6 /* JSONModelError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelError.h; sourceTree = "<group>"; };
+		9825D02118CDE14800B313C6 /* JSONModelError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelError.m; sourceTree = "<group>"; };
+		9825D02318CDE14800B313C6 /* NSArray+JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+JSONModel.h"; sourceTree = "<group>"; };
+		9825D02418CDE14800B313C6 /* NSArray+JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JSONModel.m"; sourceTree = "<group>"; };
+		9825D02518CDE14800B313C6 /* JSONModelLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelLib.h; sourceTree = "<group>"; };
+		9825D02718CDE14800B313C6 /* JSONAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONAPI.h; sourceTree = "<group>"; };
+		9825D02818CDE14800B313C6 /* JSONAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONAPI.m; sourceTree = "<group>"; };
+		9825D02918CDE14800B313C6 /* JSONHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONHTTPClient.h; sourceTree = "<group>"; };
+		9825D02A18CDE14800B313C6 /* JSONHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONHTTPClient.m; sourceTree = "<group>"; };
+		9825D02B18CDE14800B313C6 /* JSONModel+networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONModel+networking.h"; sourceTree = "<group>"; };
+		9825D02C18CDE14800B313C6 /* JSONModel+networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONModel+networking.m"; sourceTree = "<group>"; };
+		9825D02E18CDE14800B313C6 /* JSONKeyMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKeyMapper.h; sourceTree = "<group>"; };
+		9825D02F18CDE14800B313C6 /* JSONKeyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKeyMapper.m; sourceTree = "<group>"; };
+		9825D03018CDE14800B313C6 /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
+		9825D03118CDE14800B313C6 /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
 		982D861818B8E638007EEB0E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		982D861A18B8E643007EEB0E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		982D862218BA3F28007EEB0E /* DlRumorComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DlRumorComment.h; path = models/DlRumorComment.h; sourceTree = "<group>"; };
@@ -76,6 +116,11 @@
 		983276D318B630B200C07DAE /* DlRumorListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DlRumorListViewController.m; sourceTree = "<group>"; };
 		983276D618B63CFC00C07DAE /* DlConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DlConfig.h; sourceTree = "<group>"; };
 		983276D718B63CFC00C07DAE /* DlConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DlConfig.m; sourceTree = "<group>"; };
+		9839726318C61A580048FFC3 /* DlSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DlSettingsViewController.h; sourceTree = "<group>"; };
+		9839726418C61A580048FFC3 /* DlSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DlSettingsViewController.m; sourceTree = "<group>"; };
+		987E9CCC18CC928A00897F8A /* rumors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = rumors.json; path = json/rumors.json; sourceTree = "<group>"; };
+		988C417D18C0B5CC003B8021 /* DlLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DlLoginViewController.h; sourceTree = "<group>"; };
+		988C417E18C0B5CC003B8021 /* DlLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DlLoginViewController.m; sourceTree = "<group>"; };
 		F91575345D4C4EC0A334DACB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +188,8 @@
 		9802DC1218B3815D00D551E4 /* RumorBoard */ = {
 			isa = PBXGroup;
 			children = (
+				9825CFEE18CDE0AF00B313C6 /* thirdparty */,
+				987E9CCB18CC926C00897F8A /* json */,
 				983276CF18B630B200C07DAE /* ui */,
 				983276C318B4DD6E00C07DAE /* clients */,
 				983276C218B4DBE700C07DAE /* models */,
@@ -187,6 +234,77 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9825CFEE18CDE0AF00B313C6 /* thirdparty */ = {
+			isa = PBXGroup;
+			children = (
+				9825D01618CDE14800B313C6 /* JSONModel */,
+			);
+			name = thirdparty;
+			sourceTree = "<group>";
+		};
+		9825D01618CDE14800B313C6 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				9825D01718CDE14800B313C6 /* JSONModel */,
+				9825D02218CDE14800B313C6 /* JSONModelCategories */,
+				9825D02518CDE14800B313C6 /* JSONModelLib.h */,
+				9825D02618CDE14800B313C6 /* JSONModelNetworking */,
+				9825D02D18CDE14800B313C6 /* JSONModelTransformations */,
+			);
+			name = JSONModel;
+			path = thirdparty/JSONModel/JSONModel;
+			sourceTree = SOURCE_ROOT;
+		};
+		9825D01718CDE14800B313C6 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				9825D01818CDE14800B313C6 /* JSONModel+CoreData.h */,
+				9825D01918CDE14800B313C6 /* JSONModel+CoreData.m */,
+				9825D01A18CDE14800B313C6 /* JSONModel.h */,
+				9825D01B18CDE14800B313C6 /* JSONModel.m */,
+				9825D01C18CDE14800B313C6 /* JSONModelArray.h */,
+				9825D01D18CDE14800B313C6 /* JSONModelArray.m */,
+				9825D01E18CDE14800B313C6 /* JSONModelClassProperty.h */,
+				9825D01F18CDE14800B313C6 /* JSONModelClassProperty.m */,
+				9825D02018CDE14800B313C6 /* JSONModelError.h */,
+				9825D02118CDE14800B313C6 /* JSONModelError.m */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		9825D02218CDE14800B313C6 /* JSONModelCategories */ = {
+			isa = PBXGroup;
+			children = (
+				9825D02318CDE14800B313C6 /* NSArray+JSONModel.h */,
+				9825D02418CDE14800B313C6 /* NSArray+JSONModel.m */,
+			);
+			path = JSONModelCategories;
+			sourceTree = "<group>";
+		};
+		9825D02618CDE14800B313C6 /* JSONModelNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				9825D02718CDE14800B313C6 /* JSONAPI.h */,
+				9825D02818CDE14800B313C6 /* JSONAPI.m */,
+				9825D02918CDE14800B313C6 /* JSONHTTPClient.h */,
+				9825D02A18CDE14800B313C6 /* JSONHTTPClient.m */,
+				9825D02B18CDE14800B313C6 /* JSONModel+networking.h */,
+				9825D02C18CDE14800B313C6 /* JSONModel+networking.m */,
+			);
+			path = JSONModelNetworking;
+			sourceTree = "<group>";
+		};
+		9825D02D18CDE14800B313C6 /* JSONModelTransformations */ = {
+			isa = PBXGroup;
+			children = (
+				9825D02E18CDE14800B313C6 /* JSONKeyMapper.h */,
+				9825D02F18CDE14800B313C6 /* JSONKeyMapper.m */,
+				9825D03018CDE14800B313C6 /* JSONValueTransformer.h */,
+				9825D03118CDE14800B313C6 /* JSONValueTransformer.m */,
+			);
+			path = JSONModelTransformations;
+			sourceTree = "<group>";
+		};
 		983276C218B4DBE700C07DAE /* models */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,8 +332,22 @@
 				983276D118B630B200C07DAE /* DlRumorCell.m */,
 				983276D218B630B200C07DAE /* DlRumorListViewController.h */,
 				983276D318B630B200C07DAE /* DlRumorListViewController.m */,
+				988C417D18C0B5CC003B8021 /* DlLoginViewController.h */,
+				988C417E18C0B5CC003B8021 /* DlLoginViewController.m */,
+				9839726318C61A580048FFC3 /* DlSettingsViewController.h */,
+				9839726418C61A580048FFC3 /* DlSettingsViewController.m */,
+				9825CFEB18CCBA4A00B313C6 /* DlCreateRumorViewController.h */,
+				9825CFEC18CCBA4A00B313C6 /* DlCreateRumorViewController.m */,
 			);
 			path = ui;
+			sourceTree = "<group>";
+		};
+		987E9CCB18CC926C00897F8A /* json */ = {
+			isa = PBXGroup;
+			children = (
+				987E9CCC18CC928A00897F8A /* rumors.json */,
+			);
+			name = json;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,6 +431,7 @@
 			files = (
 				9802DC2318B3815D00D551E4 /* Main_iPad.storyboard in Resources */,
 				9802DC2818B3815D00D551E4 /* Images.xcassets in Resources */,
+				987E9CCD18CC928A00897F8A /* rumors.json in Resources */,
 				9802DC2018B3815D00D551E4 /* Main_iPhone.storyboard in Resources */,
 				9802DC1718B3815D00D551E4 /* InfoPlist.strings in Resources */,
 			);
@@ -352,14 +485,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9825D03718CDE14800B313C6 /* NSArray+JSONModel.m in Sources */,
+				9825D03618CDE14800B313C6 /* JSONModelError.m in Sources */,
+				9825D03818CDE14800B313C6 /* JSONAPI.m in Sources */,
 				983276CB18B6307900C07DAE /* DlAPIManager.m in Sources */,
 				983276D418B630B200C07DAE /* DlRumorCell.m in Sources */,
+				9825D03518CDE14800B313C6 /* JSONModelClassProperty.m in Sources */,
 				983276D818B63CFC00C07DAE /* DlConfig.m in Sources */,
+				9825D03A18CDE14800B313C6 /* JSONModel+networking.m in Sources */,
+				9825CFED18CCBA4A00B313C6 /* DlCreateRumorViewController.m in Sources */,
 				982D862418BA3F28007EEB0E /* DlRumorComment.m in Sources */,
 				9802DC1D18B3815D00D551E4 /* DlAppDelegate.m in Sources */,
 				983276CE18B6308100C07DAE /* DlRumor.m in Sources */,
+				9825D03918CDE14800B313C6 /* JSONHTTPClient.m in Sources */,
 				983276D518B630B200C07DAE /* DlRumorListViewController.m in Sources */,
+				9825D03218CDE14800B313C6 /* JSONModel+CoreData.m in Sources */,
+				9825D03318CDE14800B313C6 /* JSONModel.m in Sources */,
 				9802DC1918B3815D00D551E4 /* main.m in Sources */,
+				9825D03C18CDE14800B313C6 /* JSONValueTransformer.m in Sources */,
+				9839726518C61A580048FFC3 /* DlSettingsViewController.m in Sources */,
+				9825D03B18CDE14800B313C6 /* JSONKeyMapper.m in Sources */,
+				988C417F18C0B5CC003B8021 /* DlLoginViewController.m in Sources */,
+				9825D03418CDE14800B313C6 /* JSONModelArray.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

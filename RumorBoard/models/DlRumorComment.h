@@ -20,5 +20,7 @@
 @property (nonatomic, strong) NSNumber *rumor;
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, strong) NSNumber *rating;
+@property (nonatomic, strong) NSDate *created_at;
+@property (nonatomic, strong) NSDate *updated_at;
 
 @end

@@ -12,4 +12,10 @@
 
 + (DlConfig *)sharedConfig;
 
+@property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSNumber *userId;
+@property (nonatomic, strong) NSString *authToken;
+
+@property (nonatomic, readonly) NSDateFormatter *dateFormatter;
+
 @end

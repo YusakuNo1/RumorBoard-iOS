@@ -10,7 +10,10 @@
 #import "DlRumorCell.h"
 #import "DlRumor.h"
 #import "DlAPIManager.h"
+#import "DlConfig.h"
+#import "DlLoginViewController.h"
 #import "RNBlurModalView.h"
+#import "SVProgressHUD.h"
 
 
 
@@ -46,10 +49,30 @@
     self.rumorList = rumorList;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if ([DlConfig sharedConfig].authToken.length == 0) {
+//        DlLoginViewController *vc = [[DlLoginViewController alloc] init];
+        DlLoginViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"DlLoginViewController"];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+//    else {
+//        [SVProgressHUD show];
+//        
+//        [DlAPIManager sharedManager]
+//    }
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [[DlAPIManager sharedManager] getRumors:^(NSArray *jsonArray, NSError *error) {
+    [[DlAPIManager sharedManager] getRumors:^(NSObject *payload, NSError *error) {
+        if (![payload isKindOfClass:[NSArray class]]) {
+            return;
+        }
+        
+        NSArray *jsonArray = (NSArray *)payload;
         NSMutableArray *rumorList = [[NSMutableArray alloc] init];
         
         for (NSDictionary *dict in jsonArray) {
@@ -168,16 +191,16 @@
  */
 
 - (IBAction)onSettings:(id)sender {
-    // Testing
-    [[DlAPIManager sharedManager] getRumors:^(NSArray *jsonArray, NSError *error) {
-        int a = 0;
-    }];
+//    // Testing
+//    [[DlAPIManager sharedManager] getRumors:^(NSArray *jsonArray, NSError *error) {
+//        int a = 0;
+//    }];
 }
 
 - (IBAction)onAddRumor:(id)sender {
-    self.tableView.scrollEnabled = FALSE;
-    RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:self title:@"Hello world!" message:@"Pur your message here."];
-    [modal show];
+//    self.tableView.scrollEnabled = FALSE;
+//    RNBlurModalView *modal = [[RNBlurModalView alloc] initWithViewController:self title:@"Hello world!" message:@"Pur your message here."];
+//    [modal show];
 }
 
 @end
