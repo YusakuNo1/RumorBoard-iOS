@@ -33,6 +33,7 @@
 		9825D03A18CDE14800B313C6 /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9825D02C18CDE14800B313C6 /* JSONModel+networking.m */; };
 		9825D03B18CDE14800B313C6 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9825D02F18CDE14800B313C6 /* JSONKeyMapper.m */; };
 		9825D03C18CDE14800B313C6 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9825D03118CDE14800B313C6 /* JSONValueTransformer.m */; };
+		9825D03F18CDF06D00B313C6 /* DlRumorPoll.m in Sources */ = {isa = PBXBuildFile; fileRef = 9825D03E18CDF06D00B313C6 /* DlRumorPoll.m */; };
 		982D861918B8E638007EEB0E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 982D861818B8E638007EEB0E /* QuartzCore.framework */; };
 		982D861B18B8E643007EEB0E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 982D861A18B8E643007EEB0E /* Accelerate.framework */; };
 		982D862418BA3F28007EEB0E /* DlRumorComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 982D862318BA3F28007EEB0E /* DlRumorComment.m */; };
@@ -43,6 +44,7 @@
 		983276D818B63CFC00C07DAE /* DlConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 983276D718B63CFC00C07DAE /* DlConfig.m */; };
 		9839726518C61A580048FFC3 /* DlSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9839726418C61A580048FFC3 /* DlSettingsViewController.m */; };
 		988C417F18C0B5CC003B8021 /* DlLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988C417E18C0B5CC003B8021 /* DlLoginViewController.m */; };
+		98B5231E18CEC39700A7B9FB /* DlBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B5231D18CEC39700A7B9FB /* DlBarChartView.m */; };
 		A9517BD8BB1F49F7B134B3FF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1609B9ECA62F4FAABB369D27 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +103,8 @@
 		9825D02F18CDE14800B313C6 /* JSONKeyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKeyMapper.m; sourceTree = "<group>"; };
 		9825D03018CDE14800B313C6 /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
 		9825D03118CDE14800B313C6 /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
+		9825D03D18CDF06D00B313C6 /* DlRumorPoll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DlRumorPoll.h; path = models/DlRumorPoll.h; sourceTree = "<group>"; };
+		9825D03E18CDF06D00B313C6 /* DlRumorPoll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DlRumorPoll.m; path = models/DlRumorPoll.m; sourceTree = "<group>"; };
 		982D861818B8E638007EEB0E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		982D861A18B8E643007EEB0E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		982D862218BA3F28007EEB0E /* DlRumorComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DlRumorComment.h; path = models/DlRumorComment.h; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 		9839726418C61A580048FFC3 /* DlSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DlSettingsViewController.m; sourceTree = "<group>"; };
 		988C417D18C0B5CC003B8021 /* DlLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DlLoginViewController.h; sourceTree = "<group>"; };
 		988C417E18C0B5CC003B8021 /* DlLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DlLoginViewController.m; sourceTree = "<group>"; };
+		98B5231C18CEC39700A7B9FB /* DlBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DlBarChartView.h; sourceTree = "<group>"; };
+		98B5231D18CEC39700A7B9FB /* DlBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DlBarChartView.m; sourceTree = "<group>"; };
 		F91575345D4C4EC0A334DACB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -309,6 +315,8 @@
 				982D862318BA3F28007EEB0E /* DlRumorComment.m */,
 				983276CC18B6308100C07DAE /* DlRumor.h */,
 				983276CD18B6308100C07DAE /* DlRumor.m */,
+				9825D03D18CDF06D00B313C6 /* DlRumorPoll.h */,
+				9825D03E18CDF06D00B313C6 /* DlRumorPoll.m */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -335,6 +343,8 @@
 				9839726418C61A580048FFC3 /* DlSettingsViewController.m */,
 				9825CFEB18CCBA4A00B313C6 /* DlCreateRumorViewController.h */,
 				9825CFEC18CCBA4A00B313C6 /* DlCreateRumorViewController.m */,
+				98B5231C18CEC39700A7B9FB /* DlBarChartView.h */,
+				98B5231D18CEC39700A7B9FB /* DlBarChartView.m */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -486,6 +496,7 @@
 				9802DC1D18B3815D00D551E4 /* DlAppDelegate.m in Sources */,
 				983276CE18B6308100C07DAE /* DlRumor.m in Sources */,
 				9825D03918CDE14800B313C6 /* JSONHTTPClient.m in Sources */,
+				98B5231E18CEC39700A7B9FB /* DlBarChartView.m in Sources */,
 				983276D518B630B200C07DAE /* DlRumorListViewController.m in Sources */,
 				9825D03218CDE14800B313C6 /* JSONModel+CoreData.m in Sources */,
 				9825D03318CDE14800B313C6 /* JSONModel.m in Sources */,
@@ -495,6 +506,7 @@
 				9825D03B18CDE14800B313C6 /* JSONKeyMapper.m in Sources */,
 				988C417F18C0B5CC003B8021 /* DlLoginViewController.m in Sources */,
 				9825D03418CDE14800B313C6 /* JSONModelArray.m in Sources */,
+				9825D03F18CDF06D00B313C6 /* DlRumorPoll.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,4 +28,10 @@
 - (void)setRumorThumbs:(int)rumorId isUp:(BOOL)isUp callback:(NetworkCallback)callback;
 - (void)createRumor:(NSDictionary *)data callback:(NetworkCallback)callback;
 
+// Rumor Poll APIs
+- (void)setRumorPoll:(int)rumorId pollColumnId:(int)pollColumnId callback:(NetworkCallback)callback;
+
+// Cookie related
+- (NSString *)getCookie:(NSString *)name;
+
 @end

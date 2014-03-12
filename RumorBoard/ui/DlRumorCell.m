@@ -8,9 +8,15 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+#import <Block.h>
+
 #import "DlRumorCell.h"
 #import "DlRumor.h"
+#import "DlRumorPoll.h"
 #import "DlConfig.h"
+#import "DlAPIManager.h"
+#import "DSBarChart.h"
+#import "DlBarChartView.h"
 #import "DlAPIManager.h"
 
 
@@ -24,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *commentsButton;
 @property (weak, nonatomic) IBOutlet UIButton *thumbUpButton;
 @property (weak, nonatomic) IBOutlet UIButton *thumbDownButton;
+@property (weak, nonatomic) IBOutlet UIView *footerView;
 
 @end
 
@@ -61,6 +68,10 @@
         self.rumorLabel.text = self.rumor.content;
         [self updateUI];
     }
+
+    if (self.rumor.poll.count > 0) {
+        int a = 0;
+    }
 }
 
 - (void)setRumor:(DlRumor *)rumor {
@@ -78,6 +89,75 @@
     [self.commentsButton setTitle:commentsString forState:UIControlStateNormal];
     [self.thumbUpButton setTitle:[self.rumor.thumbsUpCount stringValue] forState:UIControlStateNormal];
     [self.thumbDownButton setTitle:[self.rumor.thumbsDownCount stringValue] forState:UIControlStateNormal];
+    
+    if (self.rumor.poll.count > 0) {
+        self.rumorLabel.height -= kPollSize + kPollMargin*2;
+
+    CGRect frame = CGRectMake((self.width - kPollSize)/2, self.height - self.footerView.height - kPollSize - kPollMargin, kPollSize, kPollSize);
+        
+//#define USE_CUSTOM_GRAPH
+        
+#ifdef USE_CUSTOM_GRAPH
+        NSMutableArray<DlBarChartViewItem> *items = [@[] mutableCopy];
+        
+        for (DlRumorPoll *poll in self.rumor.poll) {
+            DlBarChartViewItem *item = [[DlBarChartViewItem alloc] init];
+            item.count = poll.rumorPollUserCount.integerValue;
+//            item.count = (rand() % 40) + 10;                       // TESTING
+            item.title = poll.name;
+            [items addObject:item];
+        }
+        
+        DlBarChartView *view = [[DlBarChartView alloc] initWithFrame:frame items:items];
+        [self addSubview:view];
+#else
+//        NSArray *vals = [NSArray arrayWithObjects:
+//                         [NSNumber numberWithInt:30],
+//                         [NSNumber numberWithInt:40],
+//                         [NSNumber numberWithInt:20],
+//                         [NSNumber numberWithInt:56],
+//                         [NSNumber numberWithInt:70],
+//                         nil];
+//        NSArray *refs = [NSArray arrayWithObjects:@"M", @"Tu", @"W", @"Th", @"F", nil];
+        NSMutableArray *vals = [NSMutableArray array];
+        NSMutableArray *refs = [NSMutableArray array];
+        
+        for (DlRumorPoll *poll in self.rumor.poll) {
+//            poll.rumorPollUserCount = [NSNumber numberWithInt:(rand() % 40) + 10];                       // TESTING
+            [vals addObject:poll.rumorPollUserCount];
+            [refs addObject:poll.name];
+        }
+        
+        DSBarChart *chrt = [[DSBarChart alloc] initWithFrame:frame
+                                                       color:[UIColor greenColor]
+                                                  references:refs
+                                                   andValues:vals];
+        chrt.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        frame.origin.x = 0;
+        frame.origin.y = 0;
+        chrt.bounds = frame;
+        [self addSubview:chrt];
+        
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] bk_initWithHandler:^(UIGestureRecognizer *sender, UIGestureRecognizerState state, CGPoint location) {
+            UIAlertView *alert = [UIAlertView bk_alertViewWithTitle:@"Please Vote:"];
+            [alert bk_setCancelButtonWithTitle:@"Cancel" handler:^{
+            }];
+            
+            for (DlRumorPoll *poll in self.rumor.poll) {
+                [alert bk_addButtonWithTitle:poll.name handler:^{
+                    [[DlAPIManager sharedManager] setRumorPoll:self.rumor.id.intValue
+                                                  pollColumnId:poll.id.intValue
+                                                      callback:^(NSObject *payload, NSError *error) {
+                                                          [chrt setNeedsDisplay];
+                    }];
+                }];
+            }
+            
+            [alert show];
+        }];
+        [chrt addGestureRecognizer:tapGesture];
+#endif
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

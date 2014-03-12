@@ -88,7 +88,11 @@
             }
         }
         
-        self.rumorList = rumorList;
+        self.rumorList = [rumorList sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            DlRumor *rumor1 = obj1;
+            DlRumor *rumor2 = obj2;
+            return [rumor2.updated_at compare:rumor1.updated_at];
+        }];
         
         [self.tableView reloadData];
     }];

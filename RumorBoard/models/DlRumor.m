@@ -49,6 +49,10 @@ float _heightPerLine = -1;
         
 //        for (self.)
     }
+    
+    if (self.poll.count > 0) {
+        height += kPollSize + kPollMargin*2;
+    }
 
     return height;
 }

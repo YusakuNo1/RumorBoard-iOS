@@ -124,8 +124,13 @@ NSString *kJsonQuerySubfix = @"?format=json";
 - (void)loginWithUsername:(NSString *)username
                  password:(NSString *)password
                  callback:(NetworkCallback)callback {
+    NSString *csrfToken = [[DlAPIManager sharedManager] getCookie:@"csrftoken"];
+    
+    NSMutableDictionary *dict = [@{@"email":username, @"password":password} mutableCopy];
+    [dict setObject:csrfToken forKey:@"csrfmiddlewaretoken"];
+    
     [JSONHTTPClient postJSONFromURLWithString:[[self serverUrl] stringByAppendingString:@"users/login/"]
-                                       params:@{@"email":username, @"password":password}
+                                       params:dict
                                    completion:^(id json, JSONModelError *err) {
                                        if (!err && [json isKindOfClass:[NSDictionary class]]) {
                                            NSDictionary *dict = (NSDictionary *)json;
@@ -140,8 +145,13 @@ NSString *kJsonQuerySubfix = @"?format=json";
 
 
 - (void)createUserWithUsername:(NSString *)username password:(NSString *)password callback:(NetworkCallback)callback {
+    NSString *csrfToken = [[DlAPIManager sharedManager] getCookie:@"csrftoken"];
+    
+    NSMutableDictionary *dict = [@{@"email":username, @"password":password} mutableCopy];
+    [dict setObject:csrfToken forKey:@"csrfmiddlewaretoken"];
+
     [JSONHTTPClient postJSONFromURLWithString:[[self serverUrl] stringByAppendingString:@"users/"]
-                                       params:@{@"email":username, @"password":password}
+                                       params:dict
                                    completion:^(id json, JSONModelError *err) {
                                        if (!err && [json isKindOfClass:[NSDictionary class]]) {
                                            NSDictionary *dict = (NSDictionary *)json;
@@ -162,5 +172,34 @@ NSString *kJsonQuerySubfix = @"?format=json";
                                   }];
 }
 
+
+- (void)setRumorPoll:(int)rumorId pollColumnId:(int)pollColumnId callback:(NetworkCallback)callback {
+    NSString *urlString = [[self serverUrl] stringByAppendingFormat:@"rumors/%d/poll/%d/", rumorId, pollColumnId];
+    
+    NSString *authString = [@"token " stringByAppendingString:[DlConfig sharedConfig].authToken];
+    [JSONHTTPClient JSONFromURLWithString:urlString
+                                   method:kHTTPMethodPOST
+                                   params:nil
+                               orBodyData:nil
+                                  headers:@{@"Authorization": authString}
+                               completion:^(id json, JSONModelError *err) {
+                                   if (callback) {
+                                       callback(json, err);
+                                   }
+                               }];
+}
+
+
+- (NSString *)getCookie:(NSString *)name {
+    NSHTTPCookie *cookie;
+    NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (cookie in [cookieJar cookies]) {
+//        NSLog(@"%@", cookie);
+        if ([cookie.name isEqualToString:@"csrftoken"]) {
+            return cookie.value;
+        }
+    }
+    return @"";
+}
 
 @end

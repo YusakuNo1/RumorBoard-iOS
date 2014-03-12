@@ -57,7 +57,7 @@
 
 
 - (IBAction)onCreateTestRumors:(id)sender {
-    const int LOOP = 1;
+    const int LOOP = 10;
     
     NSNumber *mutexLock = [NSNumber numberWithBool:YES];
     __block int counter = LOOP;
@@ -81,6 +81,34 @@
                                                  }
                                              }
                                          }];
+    }
+}
+
+
+- (IBAction)onCreateTestUsers:(id)sender {
+    const int LOOP = 10;
+    
+    NSNumber *mutexLock = [NSNumber numberWithBool:YES];
+    __block int counter = LOOP;
+    for (int i=0; i<LOOP; ++i) {
+        NSString *username = [NSString stringWithFormat:@"user%02d@rumor.com", i+10];
+        NSString *password = @"111";
+        
+        [[DlAPIManager sharedManager] createUserWithUsername:username
+                                                    password:password
+                                                    callback:^(NSObject *payload, NSError *error) {
+                                                        @synchronized(mutexLock) {
+                                                            counter--;
+                                                            
+                                                            if (counter <= 0) {
+                                                                [[[UIAlertView alloc] initWithTitle:nil
+                                                                                            message:!error ? @"Users created" : @"Failed to create user"
+                                                                                           delegate:nil
+                                                                                  cancelButtonTitle:@"OK"
+                                                                                  otherButtonTitles:nil] show];
+                                                            }
+                                                        }
+                                                    }];
     }
 }
 

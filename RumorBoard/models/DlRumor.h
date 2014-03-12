@@ -10,6 +10,7 @@
 #import "JSONModel.h"
 
 
+@protocol DlRumorPoll;
 @protocol DlRumorComment;
 
 @interface DlRumor : JSONModel
@@ -26,6 +27,7 @@
 @property (nonatomic, strong) NSDate *created_at;
 @property (nonatomic, strong) NSDate *updated_at;
 //@property (nonatomic, strong) NSArray<DlRumorComment> *comments;
+@property (nonatomic, strong) NSArray<DlRumorPoll> *poll;
 
 //@property (nonatomic) float cellHeight;
 - (float)cellHeight;

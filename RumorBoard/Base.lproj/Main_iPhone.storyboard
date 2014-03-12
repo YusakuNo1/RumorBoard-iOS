@@ -177,6 +177,7 @@
                                     <outlet property="commentsButton" destination="in9-Ak-kco" id="jIn-Ku-oms"/>
                                     <outlet property="containerView" destination="kfl-CI-ljS" id="oid-X5-3Bs"/>
                                     <outlet property="createDateLabel" destination="QoW-PX-uIp" id="ZBA-ZM-TGP"/>
+                                    <outlet property="footerView" destination="uko-l1-OEJ" id="HVz-dH-9Rt"/>
                                     <outlet property="rumorLabel" destination="K6b-80-kRj" id="EzN-Ms-eiI"/>
                                     <outlet property="thumbDownButton" destination="Zjn-ei-Kpt" id="guP-O1-kH1"/>
                                     <outlet property="thumbUpButton" destination="yXT-ih-6FE" id="mVi-lR-Qcs"/>
@@ -312,13 +313,23 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uSc-iy-9LE">
-                                <rect key="frame" x="53" y="299" width="214" height="30"/>
+                                <rect key="frame" x="53" y="249" width="214" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Create Testing Rumors">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="onCreateTestRumors:" destination="zrK-nA-EQC" eventType="touchUpInside" id="OER-fp-Sn8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GYf-VC-SHl">
+                                <rect key="frame" x="53" y="287" width="214" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create Testing Users">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onCreateTestUsers:" destination="zrK-nA-EQC" eventType="touchUpInside" id="UTZ-7w-aJn"/>
                                 </connections>
                             </button>
                         </subviews>
