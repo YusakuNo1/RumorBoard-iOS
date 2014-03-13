@@ -51,8 +51,8 @@ NSString *kJsonQuerySubfix = @"?format=json";
         _serverUrl = [[NSUserDefaults standardUserDefaults] objectForKey:kKeyServerUrl];
         
         if (!_serverUrl) {
-            _serverUrl = @"http://localhost:8000/";
-//            _serverUrl = @"http://hack-day-rumor-board.herokuapp.com/";
+//            _serverUrl = @"http://localhost:8000/";
+            _serverUrl = @"http://hack-day-rumor-board.herokuapp.com/";
         }
     }
     
@@ -75,6 +75,21 @@ NSString *kJsonQuerySubfix = @"?format=json";
         NSArray *resultArray = [responseObject objectForKey:@"results"];
         if (callback) {
             callback(resultArray, nil);
+        }
+        NSLog(@"JSON: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        callback(nil, error);
+        NSLog(@"Error: %@", error);
+    }];
+}
+
+
+- (void)getRumor:(int)rumorId callback:(NetworkCallback)callback {
+    NSString *urlString = [[self serverUrl] stringByAppendingFormat:@"rumors/%d/%@", rumorId, kJsonQuerySubfix];
+    
+    [self.httpManager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (callback) {
+            callback(responseObject, nil);
         }
         NSLog(@"JSON: %@", responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -124,7 +139,7 @@ NSString *kJsonQuerySubfix = @"?format=json";
 - (void)loginWithUsername:(NSString *)username
                  password:(NSString *)password
                  callback:(NetworkCallback)callback {
-    NSString *csrfToken = [[DlAPIManager sharedManager] getCookie:@"csrftoken"];
+    NSString *csrfToken = [[DlAPIManager sharedManager] getCookie:kCSRFToken];
     
     NSMutableDictionary *dict = [@{@"email":username, @"password":password} mutableCopy];
     [dict setObject:csrfToken forKey:@"csrfmiddlewaretoken"];
@@ -145,7 +160,7 @@ NSString *kJsonQuerySubfix = @"?format=json";
 
 
 - (void)createUserWithUsername:(NSString *)username password:(NSString *)password callback:(NetworkCallback)callback {
-    NSString *csrfToken = [[DlAPIManager sharedManager] getCookie:@"csrftoken"];
+    NSString *csrfToken = [[DlAPIManager sharedManager] getCookie:kCSRFToken];
     
     NSMutableDictionary *dict = [@{@"email":username, @"password":password} mutableCopy];
     [dict setObject:csrfToken forKey:@"csrfmiddlewaretoken"];
@@ -168,6 +183,10 @@ NSString *kJsonQuerySubfix = @"?format=json";
 - (void)logoutWithCallback:(NetworkCallback)callback {
     [JSONHTTPClient getJSONFromURLWithString:[[self serverUrl] stringByAppendingString:@"users/logout/"]
                                   completion:^(id json, JSONModelError *err) {
+                                      if (!err) {
+                                          [self removeCookie:kCSRFToken];
+                                      }
+                                      
                                       callback(json, err);
                                   }];
 }
@@ -191,15 +210,24 @@ NSString *kJsonQuerySubfix = @"?format=json";
 
 
 - (NSString *)getCookie:(NSString *)name {
-    NSHTTPCookie *cookie;
     NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    for (cookie in [cookieJar cookies]) {
-//        NSLog(@"%@", cookie);
-        if ([cookie.name isEqualToString:@"csrftoken"]) {
+    for (NSHTTPCookie *cookie in [cookieJar cookies]) {
+        if ([cookie.name isEqualToString:name]) {
             return cookie.value;
         }
     }
     return @"";
+}
+
+- (void)removeCookie:(NSString *)name {
+//    NSMutableArray *deleteCookieList = [NSMutableArray array];
+    NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in [cookieJar cookies]) {
+        if ([cookie.name isEqualToString:name]) {
+//            [deleteCookieList addObject:cookie];
+            [cookieJar deleteCookie:cookie];
+        }
+    }
 }
 
 @end

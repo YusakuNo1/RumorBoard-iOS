@@ -21,6 +21,7 @@
     #define kUsername        @"kUsername"
     #define kUserId          @"kUserId"
     #define kAuthToken       @"kAuthToken"
+    #define kCSRFToken       @"csrftoken"
 
     typedef void(^NetworkCallback)(NSObject *payload, NSError *error);
 

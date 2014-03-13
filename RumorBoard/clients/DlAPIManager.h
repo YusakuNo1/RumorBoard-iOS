@@ -25,6 +25,7 @@
 
 // Rumor APIs
 - (void)getRumors:(NetworkCallback)callback;
+- (void)getRumor:(int)rumorId callback:(NetworkCallback)callback;
 - (void)setRumorThumbs:(int)rumorId isUp:(BOOL)isUp callback:(NetworkCallback)callback;
 - (void)createRumor:(NSDictionary *)data callback:(NetworkCallback)callback;
 
@@ -33,5 +34,8 @@
 
 // Cookie related
 - (NSString *)getCookie:(NSString *)name;
+- (NSString *)getCookieCSRF;
+- (void)removeCookie:(NSString *)name;
+- (void)removeCookieCSRF;
 
 @end

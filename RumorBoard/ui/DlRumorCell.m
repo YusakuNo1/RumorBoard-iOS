@@ -32,6 +32,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *thumbDownButton;
 @property (weak, nonatomic) IBOutlet UIView *footerView;
 
+@property (nonatomic, strong) DSBarChart *bartChart;
+
 @end
 
 
@@ -83,7 +85,10 @@
     if (!self.rumor)
         return;
     
+    [self.bartChart removeFromSuperview];
+    
     self.rumorLabel.text = self.rumor.content;
+//    self.userNameLabel.text = self.rumor.u
     self.createDateLabel.text = [[DlConfig sharedConfig].dateFormatter stringFromDate:self.rumor.updated_at];
     NSString *commentsString = [NSString stringWithFormat:@"%@ Comment%@", self.rumor.commentCount, self.rumor.commentCount.intValue == 1 ? @"" : @"s"];
     [self.commentsButton setTitle:commentsString forState:UIControlStateNormal];
@@ -128,15 +133,15 @@
             [refs addObject:poll.name];
         }
         
-        DSBarChart *chrt = [[DSBarChart alloc] initWithFrame:frame
+        DSBarChart *bartChart = [[DSBarChart alloc] initWithFrame:frame
                                                        color:[UIColor greenColor]
                                                   references:refs
                                                    andValues:vals];
-        chrt.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        bartChart.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         frame.origin.x = 0;
         frame.origin.y = 0;
-        chrt.bounds = frame;
-        [self addSubview:chrt];
+        bartChart.bounds = frame;
+        [self addSubview:bartChart];
         
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] bk_initWithHandler:^(UIGestureRecognizer *sender, UIGestureRecognizerState state, CGPoint location) {
             UIAlertView *alert = [UIAlertView bk_alertViewWithTitle:@"Please Vote:"];
@@ -148,16 +153,36 @@
                     [[DlAPIManager sharedManager] setRumorPoll:self.rumor.id.intValue
                                                   pollColumnId:poll.id.intValue
                                                       callback:^(NSObject *payload, NSError *error) {
-                                                          [chrt setNeedsDisplay];
+                                                          [self updateRumor];
                     }];
                 }];
             }
             
             [alert show];
         }];
-        [chrt addGestureRecognizer:tapGesture];
+        [bartChart addGestureRecognizer:tapGesture];
+        self.bartChart = bartChart;
 #endif
     }
+}
+
+- (void)updateRumor {
+    [[DlAPIManager sharedManager] getRumor:self.rumor.id.intValue callback:^(NSObject *payload, NSError *error) {
+        if (![payload isKindOfClass:[NSDictionary class]]) {
+            return;
+        }
+        
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:(NSDictionary *)payload
+                                                           options:NSJSONWritingPrettyPrinted
+                                                             error:nil];
+        
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        
+        DlRumor *rumor = [[DlRumor alloc] initWithString:jsonString error:nil];
+        if (rumor != nil) {
+            self.rumor = rumor;
+        }
+    }];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
