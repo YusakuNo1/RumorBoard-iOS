@@ -32,7 +32,8 @@ float _heightPerLine = -1;
 
 - (float)cellHeight {
     float height = -1;
-    height = (50 + 1 + 10 + 10) * 2;
+//    height = (50 + 1 + 10 + 10) * 2;
+    height = 464;
     
     NSDictionary *stringAttributes = [NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:FONT_SIZE]
                                                                  forKey: NSFontAttributeName];
@@ -50,9 +51,9 @@ float _heightPerLine = -1;
 //        for (self.)
     }
     
-    if (self.poll.count > 0) {
-        height += kPollSize + kPollMargin*2;
-    }
+//    if (self.poll.count > 0) {
+//        height += kPollSize + kPollMargin*2;
+//    }
 
     return height;
 }

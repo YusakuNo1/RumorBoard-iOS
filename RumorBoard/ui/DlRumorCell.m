@@ -26,11 +26,13 @@
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *createDateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *rumorLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rumorContent;
+@property (weak, nonatomic) IBOutlet UILabel *rumorTitle;
 @property (weak, nonatomic) IBOutlet UIButton *commentsButton;
 @property (weak, nonatomic) IBOutlet UIButton *thumbUpButton;
 @property (weak, nonatomic) IBOutlet UIButton *thumbDownButton;
 @property (weak, nonatomic) IBOutlet UIView *footerView;
+@property (weak, nonatomic) IBOutlet UIImageView *rumorImageView;
 
 @property (nonatomic, strong) DSBarChart *bartChart;
 
@@ -67,7 +69,7 @@
     self.containerView.layer.shadowOffset = CGSizeMake(0, 10);
     
     if (self.rumor) {
-        self.rumorLabel.text = self.rumor.content;
+        self.rumorContent.text = self.rumor.content;
         [self updateUI];
     }
 
@@ -87,43 +89,22 @@
     
     [self.bartChart removeFromSuperview];
     
-    self.rumorLabel.text = self.rumor.content;
-//    self.userNameLabel.text = self.rumor.u
+    self.rumorContent.text = self.rumor.content;
+    self.rumorTitle.text = self.rumor.title;
     self.createDateLabel.text = [[DlConfig sharedConfig].dateFormatter stringFromDate:self.rumor.updated_at];
-    NSString *commentsString = [NSString stringWithFormat:@"%@ Comment%@", self.rumor.commentCount, self.rumor.commentCount.intValue == 1 ? @"" : @"s"];
+    NSString *commentsString = [self.rumor.commentCount description];
     [self.commentsButton setTitle:commentsString forState:UIControlStateNormal];
     [self.thumbUpButton setTitle:[self.rumor.thumbsUpCount stringValue] forState:UIControlStateNormal];
     [self.thumbDownButton setTitle:[self.rumor.thumbsDownCount stringValue] forState:UIControlStateNormal];
     
-    if (self.rumor.poll.count > 0) {
-        self.rumorLabel.height -= kPollSize + kPollMargin*2;
+    self.rumorImageView.hidden = self.rumor.poll.count > 0;
 
-    CGRect frame = CGRectMake((self.width - kPollSize)/2, self.height - self.footerView.height - kPollSize - kPollMargin, kPollSize, kPollSize);
+    if (self.rumor.poll.count > 0) {
+//        self.rumorContent.height -= kPollSize + kPollMargin*2;
+
+//        CGRect frame = CGRectMake((self.width - kPollSize)/2, self.height - self.footerView.height - kPollSize - kPollMargin, kPollSize, kPollSize);
+        CGRect frame = self.rumorImageView.frame;
         
-//#define USE_CUSTOM_GRAPH
-        
-#ifdef USE_CUSTOM_GRAPH
-        NSMutableArray<DlBarChartViewItem> *items = [@[] mutableCopy];
-        
-        for (DlRumorPoll *poll in self.rumor.poll) {
-            DlBarChartViewItem *item = [[DlBarChartViewItem alloc] init];
-            item.count = poll.rumorPollUserCount.integerValue;
-//            item.count = (rand() % 40) + 10;                       // TESTING
-            item.title = poll.name;
-            [items addObject:item];
-        }
-        
-        DlBarChartView *view = [[DlBarChartView alloc] initWithFrame:frame items:items];
-        [self addSubview:view];
-#else
-//        NSArray *vals = [NSArray arrayWithObjects:
-//                         [NSNumber numberWithInt:30],
-//                         [NSNumber numberWithInt:40],
-//                         [NSNumber numberWithInt:20],
-//                         [NSNumber numberWithInt:56],
-//                         [NSNumber numberWithInt:70],
-//                         nil];
-//        NSArray *refs = [NSArray arrayWithObjects:@"M", @"Tu", @"W", @"Th", @"F", nil];
         NSMutableArray *vals = [NSMutableArray array];
         NSMutableArray *refs = [NSMutableArray array];
         
@@ -137,11 +118,11 @@
                                                        color:[UIColor greenColor]
                                                   references:refs
                                                    andValues:vals];
-        bartChart.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//        bartChart.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         frame.origin.x = 0;
         frame.origin.y = 0;
-        bartChart.bounds = frame;
-        [self addSubview:bartChart];
+//        bartChart.bounds = frame;
+        [self.containerView addSubview:bartChart];
         
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] bk_initWithHandler:^(UIGestureRecognizer *sender, UIGestureRecognizerState state, CGPoint location) {
             UIAlertView *alert = [UIAlertView bk_alertViewWithTitle:@"Please Vote:"];
@@ -162,7 +143,6 @@
         }];
         [bartChart addGestureRecognizer:tapGesture];
         self.bartChart = bartChart;
-#endif
     }
 }
 

@@ -86,7 +86,7 @@
 
 
 - (IBAction)onCreateTestUsers:(id)sender {
-    const int LOOP = 10;
+    const int LOOP = 1;
     
     NSNumber *mutexLock = [NSNumber numberWithBool:YES];
     __block int counter = LOOP;
