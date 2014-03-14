@@ -58,7 +58,7 @@
 - (void)willMoveToSuperview:(UIView *)newSuperview {
     [super willMoveToSuperview:newSuperview];
 
-    self.containerView.layer.cornerRadius = 8;
+    self.containerView.layer.cornerRadius = 4;
 //    self.containerView.layer.masksToBounds = YES;
     self.containerView.clipsToBounds = YES;
     self.containerView.layer.borderColor = [UIColor darkGrayColor].CGColor;
