@@ -66,7 +66,10 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
+    [self refresh];
+}
+
+- (void)refresh {
     [[DlAPIManager sharedManager] getRumors:^(NSObject *payload, NSError *error) {
         if (![payload isKindOfClass:[NSArray class]]) {
             return;
@@ -81,7 +84,7 @@
                                                                  error:nil];
             
             NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-                                
+            
             DlRumor *rumor = [[DlRumor alloc] initWithString:jsonString error:nil];
             if (rumor != nil) {
                 [rumorList addObject:rumor];
@@ -199,6 +202,7 @@
 //    [[DlAPIManager sharedManager] getRumors:^(NSArray *jsonArray, NSError *error) {
 //        int a = 0;
 //    }];
+    [self refresh];
 }
 
 - (IBAction)onAddRumor:(id)sender {

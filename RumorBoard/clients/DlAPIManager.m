@@ -11,6 +11,7 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "AFURLSessionManager.h"
 #import "JSONHTTPClient.h"
+#import "SVProgressHUD.h"
 
 
 NSString *kKeyServerUrl = @"kKeyServerUrl";
@@ -69,15 +70,18 @@ NSString *kJsonQuerySubfix = @"?format=json";
 
 
 - (void)getRumors:(NetworkCallback)callback {
+    [SVProgressHUD show];
     NSString *urlString = [[self serverUrl] stringByAppendingFormat:@"rumors/%@", kJsonQuerySubfix];
     
     [self.httpManager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [SVProgressHUD dismiss];
         NSArray *resultArray = [responseObject objectForKey:@"results"];
         if (callback) {
             callback(resultArray, nil);
         }
         NSLog(@"JSON: %@", responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [SVProgressHUD dismiss];
         callback(nil, error);
         NSLog(@"Error: %@", error);
     }];
@@ -85,14 +89,17 @@ NSString *kJsonQuerySubfix = @"?format=json";
 
 
 - (void)getRumor:(int)rumorId callback:(NetworkCallback)callback {
+    [SVProgressHUD show];
     NSString *urlString = [[self serverUrl] stringByAppendingFormat:@"rumors/%d/%@", rumorId, kJsonQuerySubfix];
     
     [self.httpManager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [SVProgressHUD dismiss];
         if (callback) {
             callback(responseObject, nil);
         }
         NSLog(@"JSON: %@", responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [SVProgressHUD dismiss];
         callback(nil, error);
         NSLog(@"Error: %@", error);
     }];
@@ -100,6 +107,7 @@ NSString *kJsonQuerySubfix = @"?format=json";
 
 
 - (void)setRumorThumbs:(int)rumorId isUp:(BOOL)isUp callback:(NetworkCallback)callback {
+    [SVProgressHUD show];
     NSString *urlString = [[self serverUrl] stringByAppendingFormat:@"rumors/%d/thumbs/%@/", rumorId, (isUp ? @"up" : @"down")];
 
 //    [JSONHTTPClient postJSONFromURLWithString:urlString
@@ -114,6 +122,7 @@ NSString *kJsonQuerySubfix = @"?format=json";
                                orBodyData:nil
                                   headers:@{@"Authorization": authString}
                                completion:^(id json, JSONModelError *err) {
+                                   [SVProgressHUD dismiss];
                                    if (callback) {
                                        callback(json, err);
                                    }
@@ -122,6 +131,7 @@ NSString *kJsonQuerySubfix = @"?format=json";
 
 
 - (void)createRumor:(NSDictionary *)data callback:(NetworkCallback)callback {
+    [SVProgressHUD show];
     NSString *authString = [@"token " stringByAppendingString:[DlConfig sharedConfig].authToken];
     [JSONHTTPClient JSONFromURLWithString:[[self serverUrl] stringByAppendingString:@"rumors/"]
                                    method:kHTTPMethodPOST
@@ -129,6 +139,7 @@ NSString *kJsonQuerySubfix = @"?format=json";
                                orBodyData:nil
                                   headers:@{@"Authorization": authString}
                                completion:^(id json, JSONModelError *err) {
+                                   [SVProgressHUD dismiss];
                                    if (callback) {
                                        callback(json, err);
                                    }
@@ -139,6 +150,7 @@ NSString *kJsonQuerySubfix = @"?format=json";
 - (void)loginWithUsername:(NSString *)username
                  password:(NSString *)password
                  callback:(NetworkCallback)callback {
+    [SVProgressHUD show];
     NSString *csrfToken = [[DlAPIManager sharedManager] getCookie:kCSRFToken];
     
     NSMutableDictionary *dict = [@{@"email":username, @"password":password} mutableCopy];
@@ -147,6 +159,7 @@ NSString *kJsonQuerySubfix = @"?format=json";
     [JSONHTTPClient postJSONFromURLWithString:[[self serverUrl] stringByAppendingString:@"users/login/"]
                                        params:dict
                                    completion:^(id json, JSONModelError *err) {
+                                       [SVProgressHUD dismiss];
                                        if (!err && [json isKindOfClass:[NSDictionary class]]) {
                                            NSDictionary *dict = (NSDictionary *)json;
                                            [DlConfig sharedConfig].username = username;
@@ -160,6 +173,7 @@ NSString *kJsonQuerySubfix = @"?format=json";
 
 
 - (void)createUserWithUsername:(NSString *)username password:(NSString *)password callback:(NetworkCallback)callback {
+    [SVProgressHUD show];
     NSString *csrfToken = [[DlAPIManager sharedManager] getCookie:kCSRFToken];
     
     NSMutableDictionary *dict = [@{@"email":username, @"password":password} mutableCopy];
@@ -168,6 +182,7 @@ NSString *kJsonQuerySubfix = @"?format=json";
     [JSONHTTPClient postJSONFromURLWithString:[[self serverUrl] stringByAppendingString:@"users/"]
                                        params:dict
                                    completion:^(id json, JSONModelError *err) {
+                                       [SVProgressHUD dismiss];
                                        if (!err && [json isKindOfClass:[NSDictionary class]]) {
                                            NSDictionary *dict = (NSDictionary *)json;
                                            [DlConfig sharedConfig].username = username;
@@ -181,8 +196,10 @@ NSString *kJsonQuerySubfix = @"?format=json";
 
 
 - (void)logoutWithCallback:(NetworkCallback)callback {
+    [SVProgressHUD show];
     [JSONHTTPClient getJSONFromURLWithString:[[self serverUrl] stringByAppendingString:@"users/logout/"]
                                   completion:^(id json, JSONModelError *err) {
+                                      [SVProgressHUD dismiss];
                                       if (!err) {
                                           [self removeCookie:kCSRFToken];
                                       }
@@ -193,6 +210,7 @@ NSString *kJsonQuerySubfix = @"?format=json";
 
 
 - (void)setRumorPoll:(int)rumorId pollColumnId:(int)pollColumnId callback:(NetworkCallback)callback {
+    [SVProgressHUD show];
     NSString *urlString = [[self serverUrl] stringByAppendingFormat:@"rumors/%d/poll/%d/", rumorId, pollColumnId];
     
     NSString *authString = [@"token " stringByAppendingString:[DlConfig sharedConfig].authToken];
@@ -202,6 +220,7 @@ NSString *kJsonQuerySubfix = @"?format=json";
                                orBodyData:nil
                                   headers:@{@"Authorization": authString}
                                completion:^(id json, JSONModelError *err) {
+                                   [SVProgressHUD dismiss];
                                    if (callback) {
                                        callback(json, err);
                                    }

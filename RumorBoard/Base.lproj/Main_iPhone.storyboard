@@ -219,11 +219,10 @@
                                 <segue destination="fnE-SB-jvz" kind="push" id="L8X-N7-HGX"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="81F-QY-jWL">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="81F-QY-jWL">
                             <color key="tintColor" red="0.1960784314" green="0.1960784314" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="onSettings:" destination="nIh-tl-bNJ" id="JYX-vC-zU9"/>
-                                <segue destination="zrK-nA-EQC" kind="modal" id="2sV-Kk-JfR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -369,8 +368,8 @@
         <image name="IconAnonymouse" width="64" height="64"/>
         <image name="comments" width="20" height="18"/>
         <image name="logoBlue" width="216" height="216"/>
-        <image name="thumbDown" width="20" height="18"/>
-        <image name="thumbUp" width="20" height="18"/>
+        <image name="thumbDown" width="20" height="20"/>
+        <image name="thumbUp" width="20" height="20"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
